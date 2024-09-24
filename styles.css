@@ -183,3 +183,7 @@ a {
   color: white;
   text-decoration: none;
 }
+
+ .nav-title a{
+    color: black;
+  }
