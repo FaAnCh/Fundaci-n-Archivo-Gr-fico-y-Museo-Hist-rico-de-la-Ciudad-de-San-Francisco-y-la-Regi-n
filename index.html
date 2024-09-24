@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Archivo Gráfico</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-title">Archivo Gráfico</div>
+        <div class="nav-buttons">
+            <button>Visita</button>
+            <button>Exhibiciones</button>
+            <button>Agenda</button>
+            <button>Museo</button>
+        </div>
+    </nav>
+
+    <div class="header">
+        <h1>Fundación Archivo Gráfico y Museo Histórico de la Ciudad de San Francisco y la Región</h1>
+        <button class="access-button">Accede a la Exhibición</button>
+    </div>
+
+    <div class="card-container">
+        <div class="card"><img src="imagen1.png" alt="Imagen 1"><h2>Título 1</h2></div>
+        <div class="card"><img src="imagen2.png" alt="Imagen 2"><h2>Título 2</h2></div>
+        <div class="card"><img src="imagen3.png" alt="Imagen 3"><h2>Título 3</h2></div>
+        <div class="card"><img src="imagen4.png" alt="Imagen 4"><h2>Título 4</h2></div>
+        <div class="card"><img src="imagen5.png" alt="Imagen 5"><h2>Título 5</h2></div>
+        <div class="card"><img src="imagen6.png" alt="Imagen 6"><h2>Título 6</h2></div>
+        <div class="card"><img src="imagen7.png" alt="Imagen 7"><h2>Título 7</h2></div>
+        <div class="card"><img src="imagen8.png" alt="Imagen 8"><h2>Título 8</h2></div>
+        <div class="card"><img src="imagen9.png" alt="Imagen 9"><h2>Título 9</h2></div>
+        <div class="card"><img src="imagen10.png" alt="Imagen 10"><h2>Título 10</h2></div>
+    </div>
+
+    <script src="script.js"></script>
+
+    <div id="footer"></div> <!-- Aquí se insertará el contenido del footer -->
+
+    <script>
+        // Cargar el contenido del footer
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer').innerHTML = data;
+            });
+    </script>
+</body>
+</html>
