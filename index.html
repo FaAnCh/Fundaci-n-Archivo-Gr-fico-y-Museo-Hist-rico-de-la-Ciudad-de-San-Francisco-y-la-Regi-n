@@ -35,17 +35,33 @@
         <div class="card"><img src="imagen10.png" alt="Imagen 10"><h2>Título 10</h2></div>
     </div>
 
+    <footer>
+        <hr>
+        <div class="footer-content">
+            <div class="logo-section">
+                <img src="assets\fundacionAGM.png" alt="fundacion AGM">
+            </div>
+            <div class="contact-info">
+                <p>Avenida de la Universidad 271<br>
+                2400 San Francisco (Córdoba)<br><br>
+                Tel. 00+54+3564-15608752<br><br>
+                archivograficoymuseo@yahoo.com.ar<br><br>
+                Facebook / Archivo Gráfico</p>
+            </div>
+            <div class="sponsors">
+                <p>Nos apoyan:<br>
+                Micron, Akron, Axion, Compañía de Seguros El Norte, Macoser.</p><br>
+                <p>Medios de comunicación que nos respaldan:<br>
+                Diario La Voz de San Justo, AM 1050, RadioCanal, Canal 4 y FM Contacto; 
+                El Periódico, Radio Estación, El Tiempo.</p>
+            </div>
+        </div>
+        <div class="copyright">
+            © Escuela Experimental ProA
+            <!-- Drakodyp -->
+        </div>
+    </footer>
+
     <script src="script.js"></script>
-
-    <div id="footer"></div> <!-- Aquí se insertará el contenido del footer -->
-
-    <script>
-        // Cargar el contenido del footer
-        fetch('footer.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('footer').innerHTML = data;
-            });
-    </script>
 </body>
 </html>
