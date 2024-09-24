@@ -12,7 +12,7 @@ body {
     display: flex;
     justify-content: space-between;
     padding: 15px;
-    position: absolute ;
+    position: fixed;
     width: 100%;
     top: 0;
 }
@@ -59,20 +59,6 @@ body {
     border-radius: 5px;
     cursor: pointer;
     margin-top: 10px; /* Espacio entre el título y el botón */
-}
-
-
-.header h1 {
-    font-size: 36px;
-}
-
-.access-button {
-    padding: 10px 20px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
 }
 
 .access-button:hover {
@@ -135,4 +121,9 @@ footer {
     margin-top: 20px;
     font-size: 12px;
     color: #777;
+}
+
+a{
+    color: white;
+    text-decoration: none;
 }
