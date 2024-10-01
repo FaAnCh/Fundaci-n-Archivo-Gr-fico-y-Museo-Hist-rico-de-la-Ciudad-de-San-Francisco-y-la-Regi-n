@@ -104,18 +104,6 @@ body {
   max-width: 50%;
   filter: drop-shadow(5px 5px 2px #0008);
 }
-.carousel-item h2 {
-  position: absolute;
-  top: 25%; /* Mueve el título a la parte superior de la imagen */
-  left: 35%;
-  transform: translateX(-50%); /* Centra el título horizontalmente */
-  color: white;
-  font-size: 48px;
-  padding: 20px;
-  width: 60%; /* Ajusta el ancho entre el 80% y el 100% */
-  max-width: 100%;
-  filter: drop-shadow(5px 5px 2px #0008);
-}
 
 .carousel-nav {
   position: absolute;
