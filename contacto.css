@@ -1,0 +1,136 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    padding-top: 80px; 
+    line-height: 1.6;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    height: 80px;
+}
+
+
+.container-contact {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+
+}
+
+
+.contact-info {
+    flex: 1;
+    padding: 20px;
+}
+
+.contact-info p {
+    margin-bottom: 20px;
+    font-size: 18px;
+    color: #444;
+}
+
+.map iframe {
+    width: 100%;
+    height: 350px;
+    border: 0;
+    border-radius: 8px;
+}
+
+.contact-form {
+    flex: 1;
+    padding: 20px;
+    background-color: #f4fdf0;
+    border-radius: 8px;
+    margin-left: 20px;
+}
+
+.contact-form label {
+    display: block;
+    font-family: "Poppins", sans-serif;
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.contact-form textarea {
+    height: 150px;
+    resize: none;
+}
+
+.contact-form button {
+    background-color: #001f3f;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+    background-color: #004080;
+}
+
+footer {
+    background-color: #001f3f;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+}
+
+footer p {
+    margin: 0;
+    font-size: 14px;
+}
+
+/* Responsive Design */
+
+@media (max-width: 768px) {
+    .container-contact {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .contact-form {
+        margin-left: 0;
+        margin-top: 20px;
+    }
+
+    .map iframe {
+        height: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-form button {
+        width: 100%;
+        padding: 12px;
+    }
+}
