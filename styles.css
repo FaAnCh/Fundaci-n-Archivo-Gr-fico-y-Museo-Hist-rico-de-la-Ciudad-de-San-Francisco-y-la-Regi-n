@@ -13,6 +13,7 @@ body {
   color: #000;
 }
 .navbar {
+  position: fixed;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -99,6 +100,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-start; /* Alinea a la izquierda */
+
+
 }
 
 .header h1 {
