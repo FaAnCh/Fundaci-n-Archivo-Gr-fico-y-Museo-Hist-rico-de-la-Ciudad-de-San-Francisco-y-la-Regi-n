@@ -223,6 +223,12 @@ footer {
 }
 
 a {
-  color: white;
-  text-decoration: none;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+  color: #5a8fba;
+  text-decoration: underline;
 }
