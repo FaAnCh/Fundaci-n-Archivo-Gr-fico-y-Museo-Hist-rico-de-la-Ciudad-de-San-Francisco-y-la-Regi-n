@@ -10,7 +10,9 @@
     <header>
       <nav class="navbar">
         <div class="navbar-logo">
-          <a href="index.html"><img src="assets/fundacionAGM.png" alt="Logo AGM" /></a>
+          <a href="index.html"
+            ><img src="assets/fundacionAGM.png" alt="Logo AGM"
+          /></a>
         </div>
         <ul class="navbar-menu">
           <li class="navbar-item"><a href="museo.html">Nosotros</a></li>
@@ -21,11 +23,26 @@
       </nav>
     </header>
     <div class="header">
-      <h1>
-        Fundación Archivo Gráfico y Museo Histórico de la Ciudad de San
-        Francisco y la Región
-      </h1>
-      
+      <div class="carousel-container">
+        <div class="carousel-slide">
+          <div class="carousel-item">
+            <img src="assets/archivo grafico.png" alt="Imagen 1" />
+            <h2>Título 1</h2>
+          </div>
+          <div class="carousel-item">
+            <img src="assets/archivo grafico.png" alt="Imagen 2" />
+            <h2>Título 2</h2>
+          </div>
+          <div class="carousel-item">
+            <img src="assets/archivo grafico.png" alt="Imagen 3" />
+            <h2>Título 3</h2>
+          </div>
+        </div>
+        <div class="carousel-nav">
+          <button id="prev">⟨</button>
+          <button id="next">⟩</button>
+        </div>
+      </div>
     </div>
     <div class="card-container">
       <div class="card">
@@ -134,5 +151,6 @@
         <!-- Drakodyp -->
       </div>
     </footer>
+    <script src="main.js"></script>
   </body>
 </html>
