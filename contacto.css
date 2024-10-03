@@ -113,4 +113,32 @@ footer {
   margin-top: 20px;
   font-size: 12px;
   color: #777;
+<<<<<<< HEAD
 }
+
+.navbar {
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+body {
+  margin: 0; /* Evitar cualquier margen no deseado en el body */
+  padding-top: 100px; /* Añadir un padding-top equivalente a la altura del navbar */
+}
+
+.container-contact {
+  margin-top: 20px; /* Margen superior adicional para asegurar visibilidad */
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1100px;
+  margin: 20px auto; /* Ajuste del margen para que esté centrado y no quede detrás del nav */
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+=======
+}
+>>>>>>> 94a5b033a0ece03d5e5e5704cff62269056ae1ee
