@@ -20,8 +20,7 @@ document.getElementById("next").addEventListener("click", () => {
 document.getElementById("prev").addEventListener("click", () => {
   showSlide(currentIndex - 1);
 });
-
-// Auto-slide every 15 seconds
 setInterval(() => {
   showSlide(currentIndex + 1);
 }, 15000);
+// Auto-slide every 15 seconds
