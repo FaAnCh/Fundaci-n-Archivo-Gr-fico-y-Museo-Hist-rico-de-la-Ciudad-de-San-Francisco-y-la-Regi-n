@@ -1,30 +1,37 @@
 /* Estilos para la galería */
 .gallery {
-    padding: 100px 20px; /* Espaciado superior e inferior para evitar que el contenido quede detrás del navbar */
-  }
-  
-  .gallery h1 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 15px;
-  }
-  
-  .gallery-item img {
-    width: 100%;
-    height: 250px;
-    border-radius: 8px;
-    transition: transform 0.3s;
-  }
-  
-  .gallery-item img:hover {
-    transform: scale(1.05);
-  }
-  
-  a{
-    margin: 0;
-  }
+  padding: 150px 20px; /* Aumenté el padding superior para evitar que el contenido quede detrás del navbar */
+}
+
+.gallery h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Siempre mostrar tres columnas */
+  gap: 15px;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover; /* Asegura que las imágenes mantengan un aspecto correcto */
+  border-radius: 8px;
+  transition: transform 0.3s;
+}
+
+.gallery-item img:hover {
+  transform: scale(1.05);
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff; /* Añadir un color de fondo para evitar que sea transparente */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Añadir una sombra para destacar el navbar */
+  z-index: 1000; /* Asegura que el navbar siempre esté por encima del contenido */
+}
