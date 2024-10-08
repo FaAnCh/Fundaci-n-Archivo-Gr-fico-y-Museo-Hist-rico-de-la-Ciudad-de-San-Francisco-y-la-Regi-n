@@ -233,3 +233,39 @@ a {
   color: #5a8fba;
   text-decoration: underline;
 }
+
+/* Añadir esto al final de tu CSS existente */
+
+.navbar-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.navbar-toggle span {
+    height: 3px;
+    width: 25px;
+    background: #000;
+    margin: 3px 0;
+}
+
+@media (max-width: 768px) {
+    .navbar-menu {
+        display: none; /* Ocultar menú por defecto */
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 60px; /* Ajustar según el tamaño de la navbar */
+        left: 0;
+        background-color: #fff; /* Color del fondo del menú */
+        z-index: 999;
+    }
+
+    .navbar-menu.active {
+        display: flex; /* Mostrar menú cuando se activa */
+    }
+
+    .navbar-toggle {
+        display: flex; /* Mostrar botón de menú hamburguesa */
+    }
+}
