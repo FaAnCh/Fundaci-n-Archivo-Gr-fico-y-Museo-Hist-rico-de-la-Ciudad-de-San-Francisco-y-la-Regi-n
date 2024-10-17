@@ -1,0 +1,113 @@
+  
+  body {
+    font-family: "Roboto", sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+}
+.container-contact {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 100px;
+    background-color: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.contact-info {
+    flex: 1;
+    padding: 20px;
+}
+
+.contact-info p {
+    margin-bottom: 20px;
+    font-size: 18px;
+    color: #444;
+}
+
+.map iframe {
+    width: 100%;
+    height: 350px;
+    border: 0;
+    border-radius: 8px;
+}
+
+.contact-form {
+    flex: 1;
+    padding: 20px;
+    background-color: #f4fdf0;
+    border-radius: 8px;
+    margin-left: 20px;
+}
+
+.contact-form label {
+    display: block;
+    font-family: "Poppins", sans-serif;
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.contact-form textarea {
+    height: 150px;
+    resize: none;
+}
+
+.contact-form button {
+    background-color: #001f3f;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+    background-color: #004080;
+}
+body {
+    margin: 0;
+    padding-top: 100px;
+}
+
+.container-contact {
+    margin-top: 20px; 
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1100px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Asegúrate de que todos los elementos tengan el box-sizing correcto */
+* {
+    box-sizing: border-box;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: calc(100% - 24px); /* Resta el padding */
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
