@@ -3,22 +3,73 @@
 <head>
 <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Biografias Locales - Archivo Gráfico</title>
-    <link rel="stylesheet" href="styles2.css" />
-    <link rel="stylesheet" href="museo.css" />
+    <title>Biografías Locales</title>
+    <link rel="stylesheet" href="estilos/biografias.css" />
+    <meta name="description" content="Descubre las biografías de personajes locales destacados en la historia de San Francisco. Aprende sobre sus contribuciones, legado y su impacto en la comunidad.">
+    <meta name="keywords" content="biografías, personajes locales, San Francisco, historia, cultura, legado, contribuciones, comunidad, personalidades, patrimonio">
+
+    <link rel="icon" type="image/png" href="imagenes/logoAGM.png">
+        <!-- Incluye Font Awesome para los iconos -->
     <link
-    href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Great+Vibes&display=swap"
       rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
-    <meta name="description" content="Descubre la Fundación Archivo Gráfico y Museo Histórico de San Francisco y la Región. Conoce nuestras exposiciones, programa de visitas escolares y cómo ponerte en contacto con nosotros para más información.">
-    <meta name="keywords" content="museo, Fundación Archivo Gráfico, San Francisco, exposiciones, visitas escolares, historia, cultura, arte, patrimonio, educación, contacto">
-    <link rel="icon" type="image/png" href="assets/fundacionAGM.png">
+    <?php
+include 'db.php'; // Asegúrate de incluir tu conexión a la base de datos
+
+// Consulta para obtener la imagen del héroe correspondiente a la zona "Inicio"
+$inicio = $conn->query("SELECT image_url FROM hero_images WHERE zone = 'Biografías Locales' LIMIT 1")->fetch_assoc();
+?>
+    <style>
+      
+      /* HERO */
+.hero {
+          background-image: url("<?php echo htmlspecialchars($inicio['image_url']); ?>");
+  background-position: center; /* Centra la imagen */
+  background-size: cover; /* Escala la imagen para cubrir todo el contenedor */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  width: 100%;
+  height: 75vh;
+}
+
+.hero h1 {
+  position: absolute;
+  bottom: 20%;
+  left: 10%;
+  color: white;
+  font-size: 68px;
+  padding: 20px;
+  max-width: 50%;
+  filter: drop-shadow(5px 5px 2px #0008);
+}
+    </style>
 
 </head>
 <body>
-<?php include "nav.php"?>
+    <header class="header">
+        <nav class="navbar">
+            <div class="navbar-logo">
+                <a href="index.php">
+                    <img src="imagenes/logoAGM.png" alt="Logo AGM" />
+                </a>
+            </div>
+            <div class="navbar-toggle" id="navbar-toggle">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+            <ul class="navbar-menu" id="navbar-menu">
+                <li class="navbar-item"><a href="index.php">Inicio</a></li>
+                <li class="navbar-item"><a href="museo.php">Nosotros</a></li>
+                <li class="navbar-item"><a href="archivo.php">Archivo</a></li>
+                <li class="navbar-item"><a href="visitas.php">Visitas</a></li>
+                <li class="navbar-item"><a href="biografias.php">Biografias Locales</a></li>
+                <li class="navbar-item"><a href="contacto.php">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
 
-
+<div class="hero">
+      <h1>Biografías Locales</h1>
+    </div>
 <div class="info">
     <div class="intro">
         <p>En la historia de San Francisco, muchas personas lograron destacarse por su función en la vida pública, ya sea institucional, como gubernamental, empresaria, deportiva, cultural o educativa.
@@ -162,7 +213,60 @@ Era una persona de sólida formación cultural, afable y comedida, lo que le per
 
 
 </div>
-
-<?php include "footer.php"?>
+<!-- Pie de página -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-section">
+          <h3>Contacto</h3>
+          <p>Avenida de la Universidad 271, 2400 San Francisco (Córdoba)</p>
+          <p>Teléfono: +54 3564-15608752</p>
+          <p>Email: archivograficoymuseo@yahoo.com.ar</p>
+        </div>
+        <div class="footer-section">
+          <h3>Redes Sociales</h3>
+          <a href="https://www.facebook.com/proa" target="_blank"
+            ><i class="fab fa-facebook"></i> Facebook</a
+          ><br />
+          <a href="https://www.twitter.com/proa" target="_blank"
+            ><i class="fab fa-twitter"></i> Twitter</a
+          ><br />
+          <a href="https://www.instagram.com/proa" target="_blank"
+            ><i class="fab fa-instagram"></i> Instagram</a
+          >
+        </div>
+        <div class="footer-section">
+          <h3>Enlaces Útiles</h3>
+          <a href="">Nosotros</a><br />
+          <a href="">Archivo</a><br />
+          <a href="">Classroom</a><br />
+          <a href="">Contacto</a><br />
+        </div>
+      </div>
+      <div class="footer-container">
+        <div class="footer-section">
+          <h3>Nos apoyan:</h3>
+          <p>
+            Micron Fresar S.A. Akron, Axion; Compañía de Seguros El Norte;
+            Macoser S.A.; Sindicato de Empleados de Comercio de San Francisco;
+            Gobierno de la Provincia de Córdoba; Gobierno Municipal de la Ciudad
+            de San Francisco; Centro de Estudios e Investigaciones Históricas
+            Parque España (Cehipe) Rosario (Santa Fe); Fundación Bunge y Born
+            (Buenos Aires).
+          </p>
+        </div>
+        <div class="footer-section">
+          <h3>Medios de comunicación que nos respaldan:</h3>
+          <p>
+            Diario La Voz de San Justo, AM 1050, RadioCanal, Canal 4 y FM
+            Contacto; Radio Estación, El Periódico, El Tiempo, La Voz del
+            Interior (Córdoba).
+          </p>
+        </div>
+      </div>
+      <p class="footer-copy">
+        &copy; 2024 Proa Técnica. Todos los derechos reservados.
+      </p>
+    </footer>
+    <script src="burguer.js"></script>
 </body>
 </html>

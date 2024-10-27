@@ -3,20 +3,37 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contacto - Archivo Gráfico</title>
-    <link rel="stylesheet" href="styles2.css" />
-    <link rel="stylesheet" href="contacto.css" />
+    <title>Contacto</title>
+    <link rel="stylesheet" href="estilos/contact.css" />
+    <meta name="description" content="Contacta con la Fundación Archivo Gráfico y Museo Histórico de San Francisco para obtener más información sobre nuestras exposiciones, visitas escolares y actividades. Estamos aquí para atender tus consultas y proporcionarte la información que necesites.">
+    <meta name="keywords" content="contacto, museo, Fundación Archivo Gráfico, San Francisco, exposiciones, visitas escolares, historia, cultura, arte, patrimonio, educación, consultas, información">
+    <link rel="icon" type="image/png" href="imagenes/logoAGM.png">
     <link
-    href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Great+Vibes&display=swap"
       rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
-    <meta name="description" content="Descubre la Fundación Archivo Gráfico y Museo Histórico de San Francisco y la Región. Conoce nuestras exposiciones, programa de visitas escolares y cómo ponerte en contacto con nosotros para más información.">
-    <meta name="keywords" content="museo, Fundación Archivo Gráfico, San Francisco, exposiciones, visitas escolares, historia, cultura, arte, patrimonio, educación, contacto">
-    <link rel="icon" type="image/png" href="assets/fundacionAGM.png">
-
   </head>
   <body>
-  <?php include "nav.php"?>
+    <header class="header">
+        <nav class="navbar">
+            <div class="navbar-logo">
+                <a href="index.php">
+                    <img src="imagenes/logoAGM.png" alt="Logo AGM" />
+                </a>
+            </div>
+            <div class="navbar-toggle" id="navbar-toggle">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+            <ul class="navbar-menu" id="navbar-menu">
+                <li class="navbar-item"><a href="index.php">Inicio</a></li>
+                <li class="navbar-item"><a href="museo.php">Nosotros</a></li>
+                <li class="navbar-item"><a href="archivo.php">Archivo</a></li>
+                <li class="navbar-item"><a href="visitas.php">Visitas</a></li>
+                <li class="navbar-item"><a href="biografias.php">Biografias Locales</a></li>
+                <li class="navbar-item"><a href="contacto.php">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <div class="container-contact">
       <div class="contact-info">
@@ -50,7 +67,61 @@
       </div>
     </div>
 
-    <?php include "footer.php"?>
+<!-- Pie de página -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-section">
+          <h3>Contacto</h3>
+          <p>Avenida de la Universidad 271, 2400 San Francisco (Córdoba)</p>
+          <p>Teléfono: +54 3564-15608752</p>
+          <p>Email: archivograficoymuseo@yahoo.com.ar</p>
+        </div>
+        <div class="footer-section">
+          <h3>Redes Sociales</h3>
+          <a href="https://www.facebook.com/proa" target="_blank"
+            ><i class="fab fa-facebook"></i> Facebook</a
+          ><br />
+          <a href="https://www.twitter.com/proa" target="_blank"
+            ><i class="fab fa-twitter"></i> Twitter</a
+          ><br />
+          <a href="https://www.instagram.com/proa" target="_blank"
+            ><i class="fab fa-instagram"></i> Instagram</a
+          >
+        </div>
+        <div class="footer-section">
+          <h3>Enlaces Útiles</h3>
+          <a href="">Nosotros</a><br />
+          <a href="">Archivo</a><br />
+          <a href="">Classroom</a><br />
+          <a href="">Contacto</a><br />
+        </div>
+      </div>
+      <div class="footer-container">
+        <div class="footer-section">
+          <h3>Nos apoyan:</h3>
+          <p>
+            Micron Fresar S.A. Akron, Axion; Compañía de Seguros El Norte;
+            Macoser S.A.; Sindicato de Empleados de Comercio de San Francisco;
+            Gobierno de la Provincia de Córdoba; Gobierno Municipal de la Ciudad
+            de San Francisco; Centro de Estudios e Investigaciones Históricas
+            Parque España (Cehipe) Rosario (Santa Fe); Fundación Bunge y Born
+            (Buenos Aires).
+          </p>
+        </div>
+        <div class="footer-section">
+          <h3>Medios de comunicación que nos respaldan:</h3>
+          <p>
+            Diario La Voz de San Justo, AM 1050, RadioCanal, Canal 4 y FM
+            Contacto; Radio Estación, El Periódico, El Tiempo, La Voz del
+            Interior (Córdoba).
+          </p>
+        </div>
+      </div>
+      <p class="footer-copy">
+        &copy; 2024 Proa Técnica. Todos los derechos reservados.
+      </p>
+    </footer>
+    <script src="burguer.js"></script>
 
   </body>
 </html>

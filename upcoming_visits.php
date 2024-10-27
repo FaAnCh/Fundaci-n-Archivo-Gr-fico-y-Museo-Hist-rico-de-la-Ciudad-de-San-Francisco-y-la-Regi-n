@@ -8,9 +8,8 @@ if (!isset($_SESSION['username'])) {
     exit();
 }
 
-// Obtiene todas las fotos de visitas, ordenadas de más reciente a más antigua
-$visits = $conn->query("SELECT * FROM visits ORDER BY created_at DESC");
-
+// Obtiene las próximas visitas programadas
+$upcoming_visits = $conn->query("SELECT * FROM upcoming_visits ORDER BY date, time");
 ?>
 
 <!DOCTYPE html>
@@ -18,12 +17,10 @@ $visits = $conn->query("SELECT * FROM visits ORDER BY created_at DESC");
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Visitas</title>
-    <meta name="description" content="Planifica tu visita al Fundación Archivo Gráfico y Museo Histórico de San Francisco. Encuentra información sobre horarios, tarifas, y programa de visitas escolares.">
-    <meta name="keywords" content="visitas, horarios, tarifas, Fundación Archivo Gráfico, museo, San Francisco, programa escolar, turismo, actividades, educación">
+    <title>Visitas Programadas</title>
     <link rel="icon" type="image/png" href="imagenes/logoAGM.png">
-    <link rel="stylesheet" href="estilos/visitasof.css" />
-    <!-- Incluye Font Awesome para los iconos -->
+    <link rel="stylesheet" href="estilos/upcoming_visits.css" /> <!-- Archivo CSS para estilos -->
+    <link rel="stylesheet" href="estilos/visitasof.css" /> <!-- Archivo CSS para estilos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 </head>
 <body>
@@ -34,10 +31,7 @@ $visits = $conn->query("SELECT * FROM visits ORDER BY created_at DESC");
                     <img src="imagenes/logoAGM.png" alt="Logo AGM" />
                 </a>
             </div>
-            <div class="navbar-toggle" id="navbar-toggle">
-                <i class="fa-solid fa-bars"></i>
-            </div>
-            <ul class="navbar-menu" id="navbar-menu">
+            <ul class="navbar-menu">
                 <li class="navbar-item"><a href="index.php">Inicio</a></li>
                 <li class="navbar-item"><a href="museo.php">Nosotros</a></li>
                 <li class="navbar-item"><a href="archivo.php">Archivo</a></li>
@@ -49,22 +43,37 @@ $visits = $conn->query("SELECT * FROM visits ORDER BY created_at DESC");
     </header>
 
 <main>
-    <section class="gallery">
-        <h1>Galería de Visitas</h1>
-        <div class="gallery-grid">
-            <?php if ($visits->num_rows > 0): ?>
-                <?php while ($photo = $visits->fetch_assoc()): ?>
-                    <div class="gallery-item">
-                        <img src="<?php echo htmlspecialchars($photo['image_url']); ?>" alt="Foto de visita" />
-                    </div>
-                <?php endwhile; ?>
-            <?php else: ?>
-                <p class="gallery-message">No hay fotos de visitas disponibles.</p>
-            <?php endif; ?>
+    <section class="upcoming-visits">
+        <h1>Próximas Excursiones Programadas</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php if ($upcoming_visits->num_rows > 0): ?>
+                    <?php while ($visit = $upcoming_visits->fetch_assoc()): ?>
+                        <tr>
+                            <td><?php echo htmlspecialchars(date('d/m/Y', strtotime($visit['date']))); ?></td>
+                            <td><?php echo htmlspecialchars(date('H:i', strtotime($visit['time']))); ?></td>
+                        </tr>
+                    <?php endwhile; ?>
+                <?php else: ?>
+                    <tr>
+                        <td colspan="2">No hay excursiones programadas.</td>
+                    </tr>
+                <?php endif; ?>
+            </tbody>
+        </table>
+        <p>Si deseas organizar nuevas excursiones, utiliza el botón de contacto a continuación:</p>
+        <div class="contact-buttons">
+            <a href="contacto.php" class="contact-button">Contacto <i class="fas fa-envelope"></i></a>
+            <p>Teléfono: +54 3564-15608752</p>
         </div>
     </section>
 </main>
-
 
     <!-- Pie de página -->
     <footer class="footer">
