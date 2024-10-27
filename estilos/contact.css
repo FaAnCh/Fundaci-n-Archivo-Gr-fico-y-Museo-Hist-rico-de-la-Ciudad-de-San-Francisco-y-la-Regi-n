@@ -1,0 +1,323 @@
+/* CSS BASE */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  max-width: 100vw;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  padding-top: 100px; /* Para evitar que el contenido se solape con el header */
+}
+
+/* NAV */
+/* Estilos generales para Mobile-First */
+.header {
+  flex-shrink: 0;
+  background: red;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 10000;
+  height: 90px;
+}
+
+.navbar {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 10px 20px;
+  width: 100vw;
+  box-sizing: border-box;
+  height: 90px;
+}
+
+.navbar-logo img {
+  width: 100px;
+  height: auto;
+}
+
+/* Estilos Mobile-First */
+.navbar-menu {
+  display: none; /* Oculto en pantallas pequeñas hasta que se active */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+}
+
+/* Botón de hamburguesa visible solo en pantallas pequeñas */
+.navbar-toggle {
+  display: flex;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 24px;
+  color: #000; /* Cambia a un color que desees */
+  z-index: 10001;
+}
+
+.navbar-toggle i {
+  color: #000; /* Asegúrate de que el icono también tenga el color adecuado */
+}
+
+/* Menú activo en pantallas pequeñas (pantalla completa) */
+.navbar-menu.active {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #ffffff;
+  z-index: 1501;
+  opacity: 0;
+  animation: slideIn 0.3s forwards;
+  overflow: hidden; /* Asegura que no haya scroll dentro del menú */
+}
+
+/* Clase para desactivar el scroll del body */
+.no-scroll {
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Clase para la animación de salida */
+.navbar-menu.closing {
+  animation: slideOut 0.01s forwards;
+}
+
+.navbar-item {
+  margin: 20px 0;
+}
+
+.navbar-item a {
+  color: #000;
+  font-size: 2em;
+  transition: color 0.2s;
+  text-decoration: none;
+}
+
+.navbar-item a:hover {
+  color: #0a6ec0;
+}
+
+/* Animación de entrada */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Animación de salida */
+@keyframes slideOut {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+/* Estilos para pantallas grandes (≥ 769px) */
+@media (min-width: 769px) {
+  .navbar {
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 10px 20px;
+    width: 100vw;
+    z-index: 1000;
+    box-sizing: border-box;
+  }
+
+  .navbar-menu {
+    display: flex;
+    list-style: none;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+  }
+
+  .navbar-item {
+    margin-right: 10px;
+  }
+
+  .navbar-item a {
+    text-decoration: none;
+    color: #000;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 20px;
+    transition: background-color 0.3s;
+  }
+
+  .navbar-item a:hover {
+    color: #0a6ec0;
+  }
+
+  .navbar-toggle {
+    display: none;
+  }
+}
+
+/* FOOTER */
+.footer {
+  flex-shrink: 0; /* Evita que el footer se reduzca */
+  background: #ffffff;
+  text-align: center; /* Centra el texto */
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column; /* Coloca las secciones en columna para móviles */
+  align-items: center; /* Centra las secciones */
+  margin-bottom: 10px; /* Espacio entre las secciones y la copia de derechos */
+}
+
+.footer-section {
+  margin: 10px 0px; /* Espacio entre las secciones */
+}
+
+.footer-section h3 {
+  margin-bottom: 10px; /* Espacio debajo de los encabezados */
+}
+
+.footer-section a {
+  text-decoration: none;
+  color: #000;
+  transition: color 0.2s;
+}
+
+.footer-section a:hover {
+  color: #0a6ec0; /* Color al pasar el mouse */
+}
+
+.footer-copy {
+  font-size: 14px; /* Tamaño de texto más pequeño */
+  color: #777;
+}
+
+/* Estilos para pantallas grandes (≥ 769px) */
+@media (min-width: 769px) {
+  .footer {
+    flex-direction: column;
+  }
+
+  .footer-container {
+    flex-direction: row; /* Cambia a fila en pantallas grandes */
+    justify-content: space-between; /* Espaciado entre secciones */
+    padding: 20px 100px; /* Añade un poco de padding a los lados */
+  }
+
+  .footer-section {
+    flex: 1; /* Secciones ocupan el mismo espacio */
+    margin: 0 20px; /* Espaciado entre secciones */
+  }
+
+  .footer-copy {
+    text-align: center; /* Centra la copia en el footer */
+    margin-top: 20px; /* Espacio superior para la copia */
+    color: #777;
+  }
+}
+
+/* Estilos para el Contacto */
+.container-contact {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.contact-info {
+  flex: 1;
+  padding: 20px;
+}
+
+.contact-info p {
+  margin-bottom: 20px;
+  font-size: 18px;
+  color: #444;
+}
+
+.map iframe {
+  width: 100%;
+  height: 350px;
+  border: 0;
+  border-radius: 8px;
+}
+
+.contact-form {
+  flex: 1;
+  padding: 20px;
+  background-color: #f4fdf0;
+  border-radius: 8px;
+  margin-left: 20px;
+}
+
+.contact-form label {
+  display: block;
+  font-family: "Poppins", sans-serif;
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: calc(100% - 24px); /* Resta el padding */
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.contact-form textarea {
+  height: 150px;
+  resize: none;
+}
+
+.contact-form button {
+  background-color: #001f3f;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+  background-color: #004080;
+}

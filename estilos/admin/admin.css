@@ -1,0 +1,111 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  line-height: 1.6;
+  padding: 20px;
+}
+
+/* Títulos */
+h1,
+h2 {
+  color: #444;
+  margin-bottom: 10px;
+}
+
+/* Formularios */
+form {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+/* Campos de entrada */
+input[type="text"],
+input[type="password"],
+textarea,
+select {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0 15px 0;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
+
+/* Botones */
+button {
+  background-color: #5cb85c;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #4cae4c;
+}
+
+/* Tablas */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+table,
+th,
+td {
+  border: 1px solid #ddd;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #f8f8f8;
+}
+
+/* Alertas */
+.alert {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 10px;
+  border-radius: 3px;
+  margin-bottom: 15px;
+}
+nav {
+  background-color: #f8f8f8; /* Color de fondo */
+  padding: 10px; /* Espaciado interno */
+}
+
+nav ul {
+  list-style: none; /* Sin viñetas */
+  padding: 0; /* Sin relleno */
+}
+
+nav li {
+  display: inline; /* Elementos en línea */
+  margin-right: 15px; /* Espaciado entre elementos */
+}
+
+nav a {
+  text-decoration: none; /* Sin subrayado */
+  color: #333; /* Color del texto */
+}
+
+nav a:hover {
+  color: #007bff; /* Color en hover */
+}
