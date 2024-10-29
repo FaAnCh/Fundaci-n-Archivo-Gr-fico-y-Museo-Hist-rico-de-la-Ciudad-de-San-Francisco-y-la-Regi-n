@@ -16,15 +16,12 @@
         </div>
         <div class="footer-section">
           <h3>Redes Sociales</h3>
-          <a href="https://www.facebook.com/proa" target="_blank"
-            ><i class="fab fa-facebook"></i> Facebook</a
-          ><br />
-          <a href="https://www.twitter.com/proa" target="_blank"
-            ><i class="fab fa-twitter"></i> Twitter</a
-          ><br />
-          <a href="https://www.instagram.com/proa" target="_blank"
-            ><i class="fab fa-instagram"></i> Instagram</a
-          >
+          <a href="https://www.facebook.com/archivograficoymuseo/" target="_blank"
+            ><i class="fab fa-facebook"></i> Facebook</a><br />
+          <!-- <a href="https://www.twitter.com/proa" target="_blank"
+            ><i class="fab fa-twitter"></i> Twitter</a><br /> -->
+          <a href="https://www.instagram.com/archivografico_sf/" target="_blank"
+            ><i class="fab fa-instagram"></i> Instagram</a>
         </div>
         <div class="footer-section">
           <h3>Enlaces Útiles</h3>
