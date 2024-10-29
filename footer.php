@@ -25,10 +25,10 @@
         </div>
         <div class="footer-section">
           <h3>Enlaces Útiles</h3>
-          <a href="">Nosotros</a><br />
-          <a href="">Archivo</a><br />
-          <a href="">Classroom</a><br />
-          <a href="">Contacto</a><br />
+          <a href="index.php">Inicio</a><br />
+          <a href="museo.php">Nosotros</a><br />
+          <a href="archivo.php">Archivo</a><br />
+          <a href="contacto.php">Contacto</a><br />
         </div>
       </div>
       <div class="footer-container">
