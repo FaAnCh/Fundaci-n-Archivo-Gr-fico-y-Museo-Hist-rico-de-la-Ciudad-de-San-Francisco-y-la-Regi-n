@@ -53,10 +53,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_category'])) {
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $category_name);
     if ($stmt->execute()) {
-        logAdminAction($conn, $_SESSION['username'], 'Agregó categoría', $stmt->insert_id);
+        logAdminAction($conn, $_SESSION['username'], 'Agregó Categoría', $stmt->insert_id);
         echo "<script>alert('Categoría agregada exitosamente');</script>";
     }
 }
+
+// Agregar nueva sub-categoría
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_sub_category'])) {
+    $sub_category_name = $_POST['sub_category_name'];
+    $category_id = $_POST['category_id']; // Obtener ID de categoría seleccionada
+
+    $sql = "INSERT INTO sub_categories (name, category_id) VALUES (?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("si", $sub_category_name, $category_id);
+    if ($stmt->execute()) {
+        logAdminAction($conn, $_SESSION['username'], 'Agregó sub-categoría', $stmt->insert_id);
+        echo "<script>alert('Sub-categoría agregada exitosamente');</script>";
+    }
+}
+
 
 // Eliminar categoría
 if (isset($_POST['delete_category'])) {
@@ -225,42 +240,62 @@ if (isset($_POST['logout'])) {
         <button type="submit" name="logout">Cerrar Sesión</button>
     </form>
 
-    <h2>Articulos</h2>
-    <!-- Formulario para agregar un nuevo artículo -->
-    <h3>Agregar nuevo artículo</h3>
+    <h2>Categorias</h2>
+    <!-- Formulario para agregar una nueva categoría -->
+    <h3>Agregar nueva categoría</h3>
     <form method="POST">
-        <input type="text" name="title" placeholder="Título" required><br>
-        <textarea name="content" placeholder="Contenido del artículo" required></textarea><br>
-        <input type="text" name="image_url" placeholder="URL de la Imagen" required><br>
-        <label for="category_id">Categoría:</label>
-        <select name="category_id" required>
-            <option value="">Selecciona una categoría</option>
-            <?php while ($category = $categories->fetch_assoc()): ?>
-                <option value="<?php echo $category['id']; ?>"><?php echo htmlspecialchars($category['name']); ?></option>
-            <?php endwhile; ?>
-        </select><br>
-        <button type="submit" name="add_article">Agregar Artículo</button>
+        <input type="text" name="category_name" placeholder="Nombre de la categoría" required><br>
+        <button type="submit" name="add_category">Agregar Categoría</button>
     </form>
 
-<!-- Listado de artículos existentes con opciones de edición y eliminación -->
-<h3>Artículos Existentes</h3>
+    <!-- Formulario para agregar una nueva sub-categoría -->
+    <h3>Agregar nueva sub-categoría</h3>
+<form method="POST" onsubmit="return validateSubCategoryForm()">
+    <select name="category_id" id="category_id" required>
+        <option value="">Selecciona una categoría</option>
+        <?php while ($category = $categories->fetch_assoc()): ?>
+            <option value="<?php echo $category['id']; ?>"><?php echo htmlspecialchars($category['name']); ?></option>
+        <?php endwhile; ?>
+    </select>
+    <input type="text" name="sub_category_name" placeholder="Nombre de la sub-categoría" required><br>
+    <button type="submit" name="add_sub_category">Agregar Sub-Categoría</button>
+</form>
+
+
+    <!-- Listado de categorías existentes con opción de eliminar -->
+    <h3>Categorías Existentes</h3>
     <table>
         <tr>
-            <th>Título</th>
+            <th>Nombre de la Categoría</th>
             <th>Acciones</th>
         </tr>
-        <?php while ($article = $articles->fetch_assoc()): ?>
+        <?php 
+        $categories->data_seek(0); // Reiniciar la consulta
+        while ($category = $categories->fetch_assoc()): ?>
             <tr>
-                <td><?php echo htmlspecialchars($article['title']); ?></td>
+                <td><?php echo htmlspecialchars($category['name']); ?></td>
                 <td>
                     <form method="POST" style="display:inline;">
-                        <input type="hidden" name="article_id" value="<?php echo $article['id']; ?>">
-                        <button type="submit" name="delete_article" onclick="return confirm('¿Eliminar este artículo?')">Eliminar</button>
+                        <input type="hidden" name="category_id" value="<?php echo $category['id']; ?>">
+                        <button type="submit" name="delete_category" onclick="return confirm('¿Eliminar esta categoría?')">Eliminar</button>
                     </form>
                 </td>
             </tr>
         <?php endwhile; ?>
     </table>
-    
+
+
+
+    <script>
+function validateSubCategoryForm() {
+    const categorySelect = document.getElementById('category_id');
+    if (categorySelect.value === "") {
+        alert("Por favor, selecciona una categoría antes de agregar una subcategoría.");
+        return false; // Previene el envío del formulario
+    }
+    return true; // Permite el envío del formulario
+}
+</script>
+
 </body>
 </html>

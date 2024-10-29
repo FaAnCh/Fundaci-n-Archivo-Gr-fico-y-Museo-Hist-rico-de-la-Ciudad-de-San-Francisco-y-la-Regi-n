@@ -225,42 +225,36 @@ if (isset($_POST['logout'])) {
         <button type="submit" name="logout">Cerrar Sesión</button>
     </form>
 
-    <h2>Articulos</h2>
-    <!-- Formulario para agregar un nuevo artículo -->
-    <h3>Agregar nuevo artículo</h3>
-    <form method="POST">
-        <input type="text" name="title" placeholder="Título" required><br>
-        <textarea name="content" placeholder="Contenido del artículo" required></textarea><br>
-        <input type="text" name="image_url" placeholder="URL de la Imagen" required><br>
-        <label for="category_id">Categoría:</label>
-        <select name="category_id" required>
-            <option value="">Selecciona una categoría</option>
-            <?php while ($category = $categories->fetch_assoc()): ?>
-                <option value="<?php echo $category['id']; ?>"><?php echo htmlspecialchars($category['name']); ?></option>
-            <?php endwhile; ?>
-        </select><br>
-        <button type="submit" name="add_article">Agregar Artículo</button>
-    </form>
+    <h2>Visitas</h2>
+<!-- Formulario para agregar una nueva visita -->
+<h3>Agregar nueva visita</h3>
+<form method="POST">
+    <input type="text" name="visitor_name" placeholder="Nombre del visitante" required><br>
+    <input type="date" name="visit_date" required><br>
+    <input type="text" name="visit_image_url" placeholder="URL de la Imagen" required><br>
+    <button type="submit" name="add_visit">Agregar Visita</button>
+</form>
 
-<!-- Listado de artículos existentes con opciones de edición y eliminación -->
-<h3>Artículos Existentes</h3>
-    <table>
+<!-- Listado de visitas existentes con opciones de eliminación -->
+<h3>Visitas Existentes</h3>
+<table>
+    <tr>
+        <th>Nombre del Visitante</th>
+        <th>Fecha de Visita</th>
+        <th>Acciones</th>
+    </tr>
+    <?php while ($visit = $visits->fetch_assoc()): ?>
         <tr>
-            <th>Título</th>
-            <th>Acciones</th>
+            <td><?php echo htmlspecialchars($visit['visitor_name']); ?></td>
+            <td><?php echo htmlspecialchars($visit['visit_date']); ?></td>
+            <td>
+                <form method="POST" style="display:inline;">
+                    <input type="hidden" name="visit_id" value="<?php echo $visit['id']; ?>">
+                    <button type="submit" name="delete_visit" onclick="return confirm('¿Eliminar esta visita?')">Eliminar</button>
+                </form>
+            </td>
         </tr>
-        <?php while ($article = $articles->fetch_assoc()): ?>
-            <tr>
-                <td><?php echo htmlspecialchars($article['title']); ?></td>
-                <td>
-                    <form method="POST" style="display:inline;">
-                        <input type="hidden" name="article_id" value="<?php echo $article['id']; ?>">
-                        <button type="submit" name="delete_article" onclick="return confirm('¿Eliminar este artículo?')">Eliminar</button>
-                    </form>
-                </td>
-            </tr>
-        <?php endwhile; ?>
-    </table>
-    
+    <?php endwhile; ?>
+</table>
 </body>
 </html>

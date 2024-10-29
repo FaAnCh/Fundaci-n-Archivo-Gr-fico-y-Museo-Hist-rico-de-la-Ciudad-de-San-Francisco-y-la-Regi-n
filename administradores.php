@@ -225,42 +225,35 @@ if (isset($_POST['logout'])) {
         <button type="submit" name="logout">Cerrar Sesión</button>
     </form>
 
-    <h2>Articulos</h2>
-    <!-- Formulario para agregar un nuevo artículo -->
-    <h3>Agregar nuevo artículo</h3>
-    <form method="POST">
-        <input type="text" name="title" placeholder="Título" required><br>
-        <textarea name="content" placeholder="Contenido del artículo" required></textarea><br>
-        <input type="text" name="image_url" placeholder="URL de la Imagen" required><br>
-        <label for="category_id">Categoría:</label>
-        <select name="category_id" required>
-            <option value="">Selecciona una categoría</option>
-            <?php while ($category = $categories->fetch_assoc()): ?>
-                <option value="<?php echo $category['id']; ?>"><?php echo htmlspecialchars($category['name']); ?></option>
-            <?php endwhile; ?>
-        </select><br>
-        <button type="submit" name="add_article">Agregar Artículo</button>
-    </form>
+<h2>Administradores</h2>
+    <!-- Formulario para agregar un nuevo administrador (solo para admin) -->
+    <?php if ($_SESSION['username'] === 'admin'): ?>
+        <h3>Agregar nuevo administrador</h3>
+        <form method="POST">
+            <input type="text" name="admin_username" placeholder="Nombre de usuario" required><br>
+            <input type="password" name="admin_password" placeholder="Contraseña" required><br>
+            <button type="submit" name="add_admin">Agregar Administrador</button>
+        </form>
 
-<!-- Listado de artículos existentes con opciones de edición y eliminación -->
-<h3>Artículos Existentes</h3>
-    <table>
-        <tr>
-            <th>Título</th>
-            <th>Acciones</th>
-        </tr>
-        <?php while ($article = $articles->fetch_assoc()): ?>
+        <!-- Listado de administradores existentes con opción de eliminar -->
+        <h3>Administradores Existentes</h3>
+        <table>
             <tr>
-                <td><?php echo htmlspecialchars($article['title']); ?></td>
-                <td>
-                    <form method="POST" style="display:inline;">
-                        <input type="hidden" name="article_id" value="<?php echo $article['id']; ?>">
-                        <button type="submit" name="delete_article" onclick="return confirm('¿Eliminar este artículo?')">Eliminar</button>
-                    </form>
-                </td>
+                <th>Nombre de Usuario</th>
+                <th>Acciones</th>
             </tr>
-        <?php endwhile; ?>
-    </table>
-    
+            <?php while ($admin = $admins->fetch_assoc()): ?>
+                <tr>
+                    <td><?php echo htmlspecialchars($admin['username']); ?></td>
+                    <td>
+                        <form method="POST" style="display:inline;">
+                            <input type="hidden" name="admin_id" value="<?php echo $admin['id']; ?>">
+                            <button type="submit" name="delete_admin" onclick="return confirm('¿Eliminar este administrador?')">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+            <?php endwhile; ?>
+        </table>
+    <?php endif; ?>
 </body>
 </html>

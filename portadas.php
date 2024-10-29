@@ -224,43 +224,58 @@ if (isset($_POST['logout'])) {
     <form method="POST" style="display:inline;">
         <button type="submit" name="logout">Cerrar Sesión</button>
     </form>
+<h2>Portadas</h2>
+<!-- Formulario para agregar nueva imagen hero -->
+<h3>Agregar portada</h3>
+<form method="POST" onsubmit="return previewImage();">
+    <select name="zone" required>
+        <option value="">Selecciona una zona</option>
+        <option value="Inicio">Inicio</option>
+        <option value="Nosotros">Nosotros</option>
+        <option value="Biografías Locales">Biografías Locales</option>
+    </select><br>
+    <input type="text" name="image_url" placeholder="URL de la Imagen" required oninput="updatePreview(this.value)"><br>
+    <img id="imagePreview" src="" alt="Vista previa" style="display:none; width:200px; height:auto;"><br>
+    <button type="submit" name="add_hero_image">Agregar portada</button>
+</form>
 
-    <h2>Articulos</h2>
-    <!-- Formulario para agregar un nuevo artículo -->
-    <h3>Agregar nuevo artículo</h3>
-    <form method="POST">
-        <input type="text" name="title" placeholder="Título" required><br>
-        <textarea name="content" placeholder="Contenido del artículo" required></textarea><br>
-        <input type="text" name="image_url" placeholder="URL de la Imagen" required><br>
-        <label for="category_id">Categoría:</label>
-        <select name="category_id" required>
-            <option value="">Selecciona una categoría</option>
-            <?php while ($category = $categories->fetch_assoc()): ?>
-                <option value="<?php echo $category['id']; ?>"><?php echo htmlspecialchars($category['name']); ?></option>
-            <?php endwhile; ?>
-        </select><br>
-        <button type="submit" name="add_article">Agregar Artículo</button>
-    </form>
-
-<!-- Listado de artículos existentes con opciones de edición y eliminación -->
-<h3>Artículos Existentes</h3>
-    <table>
-        <tr>
-            <th>Título</th>
-            <th>Acciones</th>
-        </tr>
-        <?php while ($article = $articles->fetch_assoc()): ?>
-            <tr>
-                <td><?php echo htmlspecialchars($article['title']); ?></td>
-                <td>
-                    <form method="POST" style="display:inline;">
-                        <input type="hidden" name="article_id" value="<?php echo $article['id']; ?>">
-                        <button type="submit" name="delete_article" onclick="return confirm('¿Eliminar este artículo?')">Eliminar</button>
-                    </form>
-                </td>
-            </tr>
-        <?php endwhile; ?>
-    </table>
+<script>
+    function updatePreview(url) {
+        const imgPreview = document.getElementById('imagePreview');
+        imgPreview.src = url;
+        imgPreview.style.display = url ? 'block' : 'none';
+    }
     
+    function previewImage() {
+        const urlInput = document.querySelector('input[name="image_url"]');
+        if (urlInput.value) {
+            updatePreview(urlInput.value);
+        }
+        return true; // Permite que el formulario se envíe
+    }
+</script>
+
+<!-- Listado de imágenes hero existentes -->
+<h3>Portadas Existentes</h3>
+<table>
+    <tr>
+        <th>Zona</th>
+        <th>URL de la Imagen</th>
+        <th>Acciones</th>
+    </tr>
+    <?php while ($hero_image = $hero_images->fetch_assoc()): ?>
+        <tr>
+            <td><?php echo htmlspecialchars($hero_image['zone']); ?></td>
+            <td><?php echo htmlspecialchars($hero_image['image_url']); ?></td>
+            <td>
+                <form method="POST" style="display:inline;">
+                    <input type="hidden" name="hero_image_id" value="<?php echo $hero_image['id']; ?>">
+                    <button type="submit" name="delete_hero_image" onclick="return confirm('¿Eliminar esta portada?')">Eliminar</button>
+                </form>
+            </td>
+        </tr>
+    <?php endwhile; ?>
+</table>
+
 </body>
 </html>
