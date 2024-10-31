@@ -1,52 +1,58 @@
+<?php
+session_start();
+include 'db.php'; // Incluye conexión a la base de datos
+
+// Verifica si el usuario es admin (opcional)
+if (!isset($_SESSION['username'])) {
+    header("Location: auth.php"); // Redirecciona si no está autenticado
+    exit();
+}
+
+// Obtiene todas las fotos de visitas, ordenadas de más reciente a más antigua
+$visits = $conn->query("SELECT * FROM visits ORDER BY created_at DESC");
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles2.css" />
-    <link rel="stylesheet" href="visitas.css" />
-    <title>Visitas - Archivo Gráfico</title>
-    <meta name="description" content="Descubre la Fundación Archivo Gráfico y Museo Histórico de San Francisco y la Región. Conoce nuestras exposiciones, programa de visitas escolares y cómo ponerte en contacto con nosotros para más información.">
-    <meta name="keywords" content="museo, Fundación Archivo Gráfico, San Francisco, exposiciones, visitas escolares, historia, cultura, arte, patrimonio, educación, contacto">
-    <link rel="icon" type="image/png" href="assets/fundacionAGM.png">
+    <title>Visitas</title>
+    <meta name="description" content="Planifica tu visita al Fundación Archivo Gráfico y Museo Histórico de San Francisco. Encuentra información sobre horarios, tarifas, y programa de visitas escolares.">
+    <meta name="keywords" content="visitas, horarios, tarifas, Fundación Archivo Gráfico, museo, San Francisco, programa escolar, turismo, actividades, educación">
+    <link rel="icon" type="image/png" href="imagenes/logoAGM.png">
+    <link rel="stylesheet" href="estilos/visitasof.css" />
+    <!-- Incluye Font Awesome para los iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+<body>
+<?php
+      include "nav.php";
+    ?>
 
-  </head>
-  <body>
-  <?php include "nav.php"?>
-
-
-    <main>
-      <section class="gallery">
-        <h1>Visitas</h1>
+<main>
+    <section class="gallery">
+        <h1>Galería de Visitas</h1>
         <div class="gallery-grid">
-          <div class="gallery-item">
-            <img src="assets/img1.jpg" alt="Descripción de la imagen 1" />
-          </div>
-          <div class="gallery-item">
-            <img src="assets/img2.jpg" alt="Descripción de la imagen 2" />
-          </div>
-          <div class="gallery-item">
-            <img src="assets/img3.jpg" alt="Descripción de la imagen 3" />
-          </div>
-          <div class="gallery-item">
-            <img src="assets/img4.jpg" alt="Descripción de la imagen 4" />
-          </div>
-          <div class="gallery-item">
-            <img src="assets/img5.jpg" alt="Descripción de la imagen 5" />
-          </div>
-          <div class="gallery-item">
-            <img src="assets/img6.jpg" alt="Descripción de la imagen 6" />
-          </div>
-          <div class="gallery-item">
-            <img src="assets/img7.jpg" alt="Descripción de la imagen 7" />
-          </div>
-          <div class="gallery-item">
-            <img src="assets/img8.jpg" alt="Descripción de la imagen 8" />
-          </div>
+            <?php if ($visits->num_rows > 0): ?>
+                <?php while ($photo = $visits->fetch_assoc()): ?>
+                    <div class="gallery-item">
+                        <img src="<?php echo htmlspecialchars($photo['image_url']); ?>" alt="Foto de visita" />
+                    </div>
+                <?php endwhile; ?>
+            <?php else: ?>
+                <p class="gallery-message">No hay fotos de visitas disponibles.</p>
+            <?php endif; ?>
         </div>
-      </section>
-    </main>
-    <?php include "footer.php"?>
+    </section>
+</main>
 
-  </body>
+
+    <!-- Pie de página -->
+    <?php
+      include "footer.php";
+    ?>
+    <script src="burguer.js"></script>
+</body>
 </html>

@@ -3,22 +3,56 @@
 <head>
 <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Biografias Locales - Archivo Gráfico</title>
-    <link rel="stylesheet" href="styles2.css" />
-    <link rel="stylesheet" href="museo.css" />
+    <title>Biografías Locales</title>
+    <link rel="stylesheet" href="estilos/biografias.css" />
+    <meta name="description" content="Descubre las biografías de personajes locales destacados en la historia de San Francisco. Aprende sobre sus contribuciones, legado y su impacto en la comunidad.">
+    <meta name="keywords" content="biografías, personajes locales, San Francisco, historia, cultura, legado, contribuciones, comunidad, personalidades, patrimonio">
+
+    <link rel="icon" type="image/png" href="imagenes/logoAGM.png">
+        <!-- Incluye Font Awesome para los iconos -->
     <link
-    href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Great+Vibes&display=swap"
       rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
-    <meta name="description" content="Descubre la Fundación Archivo Gráfico y Museo Histórico de San Francisco y la Región. Conoce nuestras exposiciones, programa de visitas escolares y cómo ponerte en contacto con nosotros para más información.">
-    <meta name="keywords" content="museo, Fundación Archivo Gráfico, San Francisco, exposiciones, visitas escolares, historia, cultura, arte, patrimonio, educación, contacto">
-    <link rel="icon" type="image/png" href="assets/fundacionAGM.png">
+    <?php
+include 'db.php'; // Asegúrate de incluir tu conexión a la base de datos
+
+// Consulta para obtener la imagen del héroe correspondiente a la zona "Inicio"
+$inicio = $conn->query("SELECT image_url FROM hero_images WHERE zone = 'Biografías Locales' LIMIT 1")->fetch_assoc();
+?>
+    <style>
+      
+      /* HERO */
+.hero {
+          background-image: url("<?php echo htmlspecialchars($inicio['image_url']); ?>");
+  background-position: center; /* Centra la imagen */
+  background-size: cover; /* Escala la imagen para cubrir todo el contenedor */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  width: 100%;
+  height: 75vh;
+}
+
+.hero h1 {
+  position: absolute;
+  bottom: 20%;
+  left: 10%;
+  color: white;
+  font-size: 68px;
+  padding: 20px;
+  max-width: 50%;
+  filter: drop-shadow(5px 5px 2px #0008);
+}
+    </style>
 
 </head>
 <body>
-<?php include "nav.php"?>
+<?php
+      include "nav.php";
+    ?>
 
-
+<div class="hero">
+      <h1>Biografías Locales</h1>
+    </div>
 <div class="info">
     <div class="intro">
         <p>En la historia de San Francisco, muchas personas lograron destacarse por su función en la vida pública, ya sea institucional, como gubernamental, empresaria, deportiva, cultural o educativa.
@@ -162,7 +196,10 @@ Era una persona de sólida formación cultural, afable y comedida, lo que le per
 
 
 </div>
-
-<?php include "footer.php"?>
+<!-- Pie de página -->
+<?php
+      include "footer.php";
+    ?>
+    <script src="burguer.js"></script>
 </body>
 </html>

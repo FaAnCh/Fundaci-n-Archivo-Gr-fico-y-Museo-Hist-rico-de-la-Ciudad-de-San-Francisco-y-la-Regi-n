@@ -3,18 +3,52 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles2.css" />
-    <link rel="stylesheet" href="museo.css" />
-    <title>Museo - Archivo Gráfico</title>
-    <meta name="description" content="Descubre la Fundación Archivo Gráfico y Museo Histórico de San Francisco y la Región. Conoce nuestras exposiciones, programa de visitas escolares y cómo ponerte en contacto con nosotros para más información.">
-    <meta name="keywords" content="museo, Fundación Archivo Gráfico, San Francisco, exposiciones, visitas escolares, historia, cultura, arte, patrimonio, educación, contacto">
-    <link rel="icon" type="image/png" href="assets/fundacionAGM.png">
+    <title>Museo</title>
+    <meta name="description" content="Explora la historia de la Fundación Archivo Gráfico y Museo Histórico de San Francisco. Conoce su origen, misión y el impacto cultural que ha tenido en la preservación del patrimonio local.">
+    <meta name="keywords" content="historia, Fundación Archivo Gráfico, San Francisco, patrimonio, cultura, conservación, archivo, museo, investigación, documentos históricos">
 
+    <link rel="icon" type="image/png" href="imagenes/logoAGM.png">
+    <link rel="stylesheet" href="estilos/museum.css" />
+        <!-- Incluye Font Awesome para los iconos -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+        <?php
+include 'db.php'; // Asegúrate de incluir tu conexión a la base de datos
+
+// Consulta para obtener la imagen del héroe correspondiente a la zona "Inicio"
+$inicio = $conn->query("SELECT image_url FROM hero_images WHERE zone = 'Nosotros' LIMIT 1")->fetch_assoc();
+?>
+    <style>
+      
+      /* HERO */
+.hero {
+          background-image: url("<?php echo htmlspecialchars($inicio['image_url']); ?>");
+  background-position: center; /* Centra la imagen */
+  background-size: cover; /* Escala la imagen para cubrir todo el contenedor */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  width: 100%;
+  height: 75vh;
+}
+
+.hero h1 {
+  position: absolute;
+  bottom: 20%;
+  left: 10%;
+  color: white;
+  font-size: 68px;
+  padding: 20px;
+  max-width: 50%;
+  filter: drop-shadow(5px 5px 2px #0008);
+}
+    </style>
   </head>
   <body>
-  <?php include "nav.php"?>
-
-    <div class="header">
+  <?php
+      include "nav.php";
+    ?>
+    <div class="hero">
       <h1>Nuestra Historia</h1>
     </div>
     <div class="info">
@@ -180,7 +214,10 @@
       </p>
     </div>
 
-    <?php include "footer.php"?>
-
+ <!-- Pie de página -->
+ <?php
+      include "footer.php";
+    ?>
+    <script src="burguer.js"></script>
   </body>
 </html>

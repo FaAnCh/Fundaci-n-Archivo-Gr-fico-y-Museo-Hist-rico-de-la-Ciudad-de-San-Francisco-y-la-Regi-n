@@ -3,20 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contacto - Archivo Gráfico</title>
-    <link rel="stylesheet" href="styles2.css" />
-    <link rel="stylesheet" href="contacto.css" />
+    <title>Contacto</title>
+    <link rel="stylesheet" href="estilos/contact.css" />
+    <meta name="description" content="Contacta con la Fundación Archivo Gráfico y Museo Histórico de San Francisco para obtener más información sobre nuestras exposiciones, visitas escolares y actividades. Estamos aquí para atender tus consultas y proporcionarte la información que necesites.">
+    <meta name="keywords" content="contacto, museo, Fundación Archivo Gráfico, San Francisco, exposiciones, visitas escolares, historia, cultura, arte, patrimonio, educación, consultas, información">
+    <link rel="icon" type="image/png" href="imagenes/logoAGM.png">
     <link
-    href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Great+Vibes&display=swap"
       rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
-    <meta name="description" content="Descubre la Fundación Archivo Gráfico y Museo Histórico de San Francisco y la Región. Conoce nuestras exposiciones, programa de visitas escolares y cómo ponerte en contacto con nosotros para más información.">
-    <meta name="keywords" content="museo, Fundación Archivo Gráfico, San Francisco, exposiciones, visitas escolares, historia, cultura, arte, patrimonio, educación, contacto">
-    <link rel="icon" type="image/png" href="assets/fundacionAGM.png">
-
   </head>
   <body>
-  <?php include "nav.php"?>
+  <?php
+      include "nav.php";
+    ?>
 
     <div class="container-contact">
       <div class="contact-info">
@@ -50,7 +50,11 @@
       </div>
     </div>
 
-    <?php include "footer.php"?>
+<!-- Pie de página -->
+<?php
+      include "footer.php";
+    ?>
+    <script src="burguer.js"></script>
 
   </body>
 </html>
