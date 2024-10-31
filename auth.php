@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio de Sesión - Administrador</title>
     <link rel="stylesheet" href="estilos/admin/auth.css">
-    <link rel="icon" type="image/png" href="imagenes/logoAGM.png">
+    <link rel="icon" type="image/png" href="<?php echo getLogoURL($conn); ?>">
 </head>
 <body>
     <h1>Inicio de Sesión - Administrador</h1>

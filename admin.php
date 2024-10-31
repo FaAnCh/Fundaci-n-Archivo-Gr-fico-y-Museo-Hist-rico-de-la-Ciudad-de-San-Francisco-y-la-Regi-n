@@ -44,137 +44,6 @@ if (isset($_POST['delete_article'])) {
         echo "<script>alert('Artículo eliminado');</script>";
     }
 }
-
-// Agregar nueva categoría
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_category'])) {
-    $category_name = $_POST['category_name'];
-
-    $sql = "INSERT INTO categories (name) VALUES (?)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $category_name);
-    if ($stmt->execute()) {
-        logAdminAction($conn, $_SESSION['username'], 'Agregó categoría', $stmt->insert_id);
-        echo "<script>alert('Categoría agregada exitosamente');</script>";
-    }
-}
-
-// Eliminar categoría
-if (isset($_POST['delete_category'])) {
-    $category_id = $_POST['category_id'];
-    $sql = "DELETE FROM categories WHERE id = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $category_id);
-    if ($stmt->execute()) {
-        logAdminAction($conn, $_SESSION['username'], 'Eliminó categoría', $category_id);
-        echo "<script>alert('Categoría eliminada');</script>";
-    }
-}
-
-// Agregar nuevo administrador
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_admin'])) {
-    $admin_username = $_POST['admin_username'];
-    $admin_password = password_hash($_POST['admin_password'], PASSWORD_BCRYPT); // Hash de la contraseña
-
-    $sql = "INSERT INTO admins (username, password) VALUES (?, ?)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ss", $admin_username, $admin_password);
-    if ($stmt->execute()) {
-        logAdminAction($conn, $_SESSION['username'], 'Agregó administrador', $stmt->insert_id);
-        echo "<script>alert('Administrador agregado exitosamente');</script>";
-    } else {
-        echo "<script>alert('Error al agregar administrador');</script>";
-    }
-}
-// Agregar nueva visita
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_visit'])) {
-    $visitor_name = $_POST['visitor_name'];
-    $visit_date = $_POST['visit_date'];
-    $image_url = $_POST['visit_image_url'];
-
-    $sql = "INSERT INTO visits (visitor_name, visit_date, image_url) VALUES (?, ?, ?)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sss", $visitor_name, $visit_date, $image_url);
-    if ($stmt->execute()) {
-        logAdminAction($conn, $_SESSION['username'], 'Agregó visita', $stmt->insert_id);
-        echo "<script>alert('Visita agregada exitosamente');</script>";
-    }
-}
-
-// Eliminar visita
-if (isset($_POST['delete_visit'])) {
-    $visit_id = $_POST['visit_id'];
-    $sql = "DELETE FROM visits WHERE id = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $visit_id);
-    if ($stmt->execute()) {
-        logAdminAction($conn, $_SESSION['username'], 'Eliminó visita', $visit_id);
-        echo "<script>alert('Visita eliminada');</script>";
-    }
-}
-// Agregar nueva imagen hero
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_hero_image'])) {
-    $zone = $_POST['zone'];
-    $image_url = $_POST['image_url'];
-
-    $sql = "INSERT INTO hero_images (zone, image_url) VALUES (?, ?)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ss", $zone, $image_url);
-    if ($stmt->execute()) {
-        logAdminAction($conn, $_SESSION['username'], 'Agregó portada', $stmt->insert_id);
-        echo "<script>alert('portada agregada exitosamente');</script>";
-    } else {
-        echo "<script>alert('Error al agregar portada');</script>";
-    }
-}
-// Eliminar imagen hero
-if (isset($_POST['delete_hero_image'])) {
-    $hero_image_id = $_POST['hero_image_id'];
-    $sql = "DELETE FROM hero_images WHERE id = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $hero_image_id);
-    if ($stmt->execute()) {
-        logAdminAction($conn, $_SESSION['username'], 'Eliminó portada', $hero_image_id);
-        echo "<script>alert(' portada eliminada');</script>";
-    }
-}
-// Agregar nueva visita futura
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_upcoming_visit'])) {
-    $date = $_POST['visit_date'];
-    $time = $_POST['visit_time'];
-    $description = $_POST['visit_description'];
-
-    $sql = "INSERT INTO upcoming_visits (date, time, description) VALUES (?, ?, ?)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sss", $date, $time, $description);
-    if ($stmt->execute()) {
-        logAdminAction($conn, $_SESSION['username'], 'Agregó visita futura', $stmt->insert_id);
-        echo "<script>alert('Visita futura agregada exitosamente');</script>";
-    } else {
-        echo "<script>alert('Error al agregar visita futura');</script>";
-    }
-}
-
-// Eliminar visita futura
-if (isset($_POST['delete_upcoming_visit'])) {
-    $visit_id = $_POST['visit_id'];
-    $sql = "DELETE FROM upcoming_visits WHERE id = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $visit_id);
-    if ($stmt->execute()) {
-        logAdminAction($conn, $_SESSION['username'], 'Eliminó visita futura', $visit_id);
-        echo "<script>alert('Visita futura eliminada');</script>";
-    }
-}
-
-// Obtener todas las visitas futuras
-$upcoming_visits = $conn->query("SELECT * FROM upcoming_visits ORDER BY date, time");
-
-
-// Obtiene todas las imágenes hero
-$hero_images = $conn->query("SELECT * FROM hero_images");
-
-// Obtiene todas las visitas
-$visits = $conn->query("SELECT * FROM visits");
 // Obtiene todos los artículos
 $articles = $conn->query("SELECT * FROM articles");
 
@@ -191,7 +60,6 @@ if (isset($_POST['logout'])) {
     exit();
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -199,14 +67,12 @@ if (isset($_POST['logout'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - Gestión AGM</title>
     <link rel="stylesheet" href="estilos\admin\admin2.css">
-    <link rel="icon" type="image/png" href="imagenes/logoAGM.png">
+    <link rel="icon" type="image/png" href="<?php echo getLogoURL($conn); ?>">
 </head>
 <body>
     <?php
         include "adminnav.php";
     ?>
-
-  
     <!-- Botón para cerrar sesión -->
     <form method="POST" style="display:inline;">
         <button type="submit" name="logout">Cerrar Sesión</button>

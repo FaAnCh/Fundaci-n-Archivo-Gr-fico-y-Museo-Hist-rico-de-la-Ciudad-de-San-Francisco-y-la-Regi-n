@@ -15,7 +15,7 @@
         <ul class="navbar-menu" id="navbar-menu">
           <li class="navbar-item"><a href="admin.php">Articulos</a></li>
           <li class="navbar-item"><a href="categorias.php">Categorias</a></li>
-          <li class="navbar-item"><a href="visita.php">Visita</a></li>
+          <li class="navbar-item"><a href="visita.php">Visitas</a></li>
           <li class="navbar-item"><a href="portadas.php">Portadas</a></li>
           <li class="navbar-item"><a href="visitas_futuras.php">Visitas futuras</a></li>
           <li class="navbar-item"><a href="administradores.php">Administradores</a></li>

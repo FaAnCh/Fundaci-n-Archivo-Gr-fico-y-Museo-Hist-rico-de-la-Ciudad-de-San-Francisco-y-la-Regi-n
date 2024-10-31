@@ -62,6 +62,22 @@ function validateCredentials($username, $password) {
     $conn->close();
 }
 
+// Fetch the logo URL from the database
+function getLogoURL($conn) {
+    $result = $conn->query("SELECT setting_value FROM site_settings WHERE setting_key = 'logo_url'");
+    if ($result && $row = $result->fetch_assoc()) {
+        return $row['setting_value'];
+    }
+    return 'imagenes/logoAGM.png'; // Default logo if not set
+}
+
+// Update the logo URL in the database
+function updateLogoURL($conn, $newLogoURL) {
+    $stmt = $conn->prepare("UPDATE site_settings SET setting_value = ? WHERE setting_key = 'logo_url'");
+    $stmt->bind_param("s", $newLogoURL);
+    return $stmt->execute();
+}
+
 
 // Otras funciones personalizadas que necesites
 
